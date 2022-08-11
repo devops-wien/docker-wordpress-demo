@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
   db:
-    image: mariadb:10.3
+    image: mariadb:10.8
     volumes:
       - "db-data:/var/lib/mysql"
     environment:
