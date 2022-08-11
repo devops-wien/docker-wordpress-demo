@@ -59,7 +59,7 @@ RUN mkdir -p /usr/src
 RUN curl -o wordpress.tar.gz -SL https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar.gz \
 	&& echo "$WORDPRESS_SHA1 *wordpress.tar.gz" | sha1sum -c - \
 	&& tar -xzf wordpress.tar.gz -C /usr/src/ \
-	&& rm wordpress.tar.gz \    
+	&& rm wordpress.tar.gz \
 	&& chown -R nobody.nobody /usr/src/wordpress
 
 # Add WP CLI
@@ -78,8 +78,8 @@ RUN chown nobody.nobody /usr/src/wordpress/wp-secrets.php && chmod 640 /usr/src/
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT [ "/entrypoint.sh" ]
 
-EXPOSE 80
+EXPOSE 8000
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 
-HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1/wp-login.php
+#HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1/wp-login.php
