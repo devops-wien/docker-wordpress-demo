@@ -1,4 +1,4 @@
-FROM alpine:3.16
+FROM alpine:3.23
 LABEL Maintainer="Tim de Pater <code@trafex.nl>" \
       Description="Lightweight WordPress container with Nginx 1.22 & PHP-FPM 8.0 based on Alpine Linux."
 
